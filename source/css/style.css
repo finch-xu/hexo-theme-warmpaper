@@ -18,11 +18,11 @@
   --grid-color: rgba(218, 119, 86, 0.07);
   --grid-color-strong: rgba(218, 119, 86, 0.12);
   --grid-size: 24px;
-  --content-width: 720px;
-  --page-width: 1080px;
-  --sidebar-width: 220px;
+  --content-width: 800px;
+  --page-width: 1200px;
+  --sidebar-width: 200px;
   --header-height: 60px;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-sans: 'LXGW WenKai GB', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --font-serif: 'LXGW WenKai GB', 'Georgia', 'Times New Roman', serif;
   --font-mono: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
   --radius: 8px;
@@ -61,6 +61,7 @@ body {
     var(--grid-size) var(--grid-size),
     calc(var(--grid-size) * 4) calc(var(--grid-size) * 4),
     calc(var(--grid-size) * 4) calc(var(--grid-size) * 4);
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -142,6 +143,75 @@ img {
 
 .nav-link:hover {
   color: var(--color-accent);
+}
+
+/* --- Profile Card (Homepage) --- */
+.profile-card {
+  max-width: var(--content-width);
+  margin: 0 auto 2rem;
+  text-align: center;
+  padding: 2rem 1.5rem 1.75rem;
+}
+
+.profile-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-border-light);
+  margin-bottom: 0.75rem;
+  transition: border-color 0.3s;
+}
+
+.profile-avatar:hover {
+  border-color: var(--color-accent);
+}
+
+.profile-name {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.35rem;
+}
+
+.profile-description {
+  font-size: 0.92rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.profile-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.profile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.82rem;
+  color: var(--color-text-tertiary);
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  border: 1px solid var(--color-border-light);
+  background: var(--color-surface);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.profile-link:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: var(--color-surface-hover);
+}
+
+.profile-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
 }
 
 /* --- Post List (Homepage) --- */
@@ -309,18 +379,13 @@ img {
 
 /* --- Post Body + TOC Layout --- */
 .post-body-wrapper {
-  display: flex;
-  gap: 3rem;
-  max-width: calc(var(--content-width) + var(--sidebar-width) + 3rem);
+  position: relative;
+  max-width: var(--content-width);
   margin: 0 auto;
-  align-items: flex-start;
 }
 
 /* --- Post Content Typography --- */
 .post-content {
-  flex: 1;
-  min-width: 0;
-  max-width: var(--content-width);
   font-family: var(--font-serif);
   font-size: 1.06rem;
   line-height: 1.85;
@@ -446,8 +511,10 @@ img {
 
 /* --- TOC Sidebar --- */
 .toc-sidebar {
+  position: absolute;
+  left: calc(100% + 2rem);
+  top: 0;
   width: var(--sidebar-width);
-  flex-shrink: 0;
 }
 
 .toc-wrapper {
@@ -659,13 +726,9 @@ img {
 }
 
 /* --- Responsive --- */
-@media (max-width: 1080px) {
+@media (max-width: 1100px) {
   .toc-sidebar {
     display: none;
-  }
-
-  .post-body-wrapper {
-    max-width: var(--content-width);
   }
 }
 
