@@ -467,6 +467,57 @@ img {
   font-size: 0.88rem;
 }
 
+/* --- Hexo Highlight Code Blocks --- */
+figure.highlight {
+  background: var(--color-code-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius);
+  margin: 1.5em 0;
+  overflow: hidden;
+}
+
+figure.highlight table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+figure.highlight td {
+  padding: 0;
+  border: none;
+}
+
+figure.highlight pre {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+figure.highlight .gutter {
+  width: 2.5em;
+  vertical-align: top;
+  user-select: none;
+}
+
+figure.highlight .gutter pre {
+  padding: 1em 0.75em;
+  text-align: right;
+  color: var(--color-text-tertiary);
+  border-right: 1px solid var(--color-border-light);
+}
+
+figure.highlight .code pre {
+  padding: 1em 1.25em;
+  overflow-x: auto;
+}
+
+figure.highlight .line {
+  line-height: 1.55;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+}
+
 .post-content table {
   width: 100%;
   border-collapse: collapse;
@@ -555,7 +606,7 @@ img {
 .toc a {
   font-family: var(--font-sans);
   font-size: 0.82rem;
-  color: var(--color-text-tertiary);
+  color: var(--color-text-secondary);
   display: block;
   padding: 0.2rem 0;
   line-height: 1.45;
