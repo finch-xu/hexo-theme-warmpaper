@@ -61,6 +61,7 @@ body {
     var(--grid-size) var(--grid-size),
     calc(var(--grid-size) * 4) calc(var(--grid-size) * 4),
     calc(var(--grid-size) * 4) calc(var(--grid-size) * 4);
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
