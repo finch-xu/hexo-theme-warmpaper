@@ -1,1 +1,215 @@
 # hexo-theme-warmpaper
+
+一个温暖的 Hexo 博客主题，灵感来自 Claude 的配色方案。米色背景搭配淡橙色方格草稿纸纹理，营造沉浸式阅读体验。
+
+## 特性
+
+- Claude 风格配色（温暖米色 + 橙色强调）
+- 淡橙色方格草稿纸背景
+- 文章页单栏布局 + 右侧 TOC 目录（sticky 定位，滚动高亮）
+- 首页卡片式文章列表
+- 响应式设计（移动端自动隐藏 TOC）
+- 霞鹜文楷 GB 字体（CDN 分片加载）
+
+## 安装
+
+将主题克隆到 Hexo 博客的 `themes` 目录：
+
+```bash
+cd your-hexo-blog
+git clone https://github.com/finch-xu/hexo-theme-warmpaper.git themes/warmpaper
+```
+
+安装 EJS 渲染器（如果尚未安装）：
+
+```bash
+npm install hexo-renderer-ejs --save
+```
+
+在博客根目录的 `_config.yml` 中启用主题：
+
+```yaml
+theme: warmpaper
+```
+
+## 开发调试
+
+### 前置条件
+
+- Node.js >= 14
+- Hexo CLI (`npm install -g hexo-cli`)
+
+### 搭建开发环境
+
+1. 创建一个测试用的 Hexo 博客：
+
+```bash
+hexo init hexo-test-blog
+cd hexo-test-blog
+npm install
+npm install hexo-renderer-ejs --save
+```
+
+2. 将主题链接到博客的 themes 目录：
+
+```bash
+# 方式一：符号链接（推荐，修改即时生效）
+ln -s /path/to/hexo-theme-warmpaper themes/warmpaper
+
+# 方式二：直接克隆
+git clone https://github.com/finch-xu/hexo-theme-warmpaper.git themes/warmpaper
+```
+
+3. 修改博客 `_config.yml`：
+
+```yaml
+theme: warmpaper
+```
+
+4. 创建一些测试文章（确保包含多级标题以测试 TOC）：
+
+```bash
+hexo new post "测试文章"
+```
+
+### 启动开发服务器
+
+```bash
+hexo clean && hexo server
+```
+
+访问 `http://localhost:4000` 预览。修改主题文件后刷新页面即可看到效果。
+
+### 常用开发命令
+
+```bash
+# 清除缓存（修改模板后建议执行）
+hexo clean
+
+# 启动本地预览服务器
+hexo server
+
+# 启动服务器并监听文件变化
+hexo server --draft
+
+# 生成静态文件
+hexo generate
+
+# 清除 + 生成 + 预览（一步到位）
+hexo clean && hexo generate && hexo server
+```
+
+### 静态预览
+
+项目中包含 `preview.html`，可直接在浏览器中打开预览主题的视觉效果，无需搭建 Hexo 环境。
+
+## Build（构建部署）
+
+生成静态文件：
+
+```bash
+hexo clean && hexo generate
+```
+
+生成的文件位于 `public/` 目录，可部署到任何静态托管服务（GitHub Pages、Vercel、Netlify 等）。
+
+### 部署到 GitHub Pages
+
+```bash
+npm install hexo-deployer-git --save
+```
+
+在博客 `_config.yml` 中配置：
+
+```yaml
+deploy:
+  type: git
+  repo: https://github.com/your-username/your-username.github.io.git
+  branch: main
+```
+
+执行部署：
+
+```bash
+hexo clean && hexo deploy
+```
+
+## 主题配置
+
+编辑主题目录下的 `_config.yml`：
+
+```yaml
+# 导航菜单
+menu:
+  Home: /
+  Archives: /archives
+
+# 文章目录（右侧边栏）
+toc:
+  enable: true
+  max_depth: 3
+  min_depth: 2
+  list_number: false
+
+# 文章摘要链接文字
+excerpt_link: Read More
+
+# 页脚版权信息（留空则使用默认）
+copyright: ""
+```
+
+## 目录结构
+
+```
+hexo-theme-warmpaper/
+├── _config.yml              # 主题配置
+├── package.json
+├── layout/
+│   ├── layout.ejs           # 基础 HTML 骨架
+│   ├── index.ejs            # 首页
+│   ├── post.ejs             # 文章详情页
+│   ├── page.ejs             # 独立页面
+│   ├── archive.ejs          # 归档页
+│   ├── category.ejs         # 分类页
+│   ├── tag.ejs              # 标签页
+│   └── partial/
+│       ├── head.ejs         # HTML head
+│       ├── header.ejs       # 导航栏
+│       ├── footer.ejs       # 页脚
+│       ├── post-card.ejs    # 文章卡片
+│       ├── pagination.ejs   # 分页
+│       └── toc.ejs          # 目录侧边栏
+└── source/
+    ├── css/
+    │   └── style.css        # 主样式表
+    └── js/
+        └── main.js          # TOC 滚动追踪
+```
+
+## 字体引用
+
+本主题使用以下外部字体资源：
+
+### 霞鹜文楷 GB (LXGW WenKai GB)
+
+用于中文正文排版的开源楷体字体，基于 FONTWORKS Klee One 衍生，符合大陆 G 源字形标准。
+
+- **字体原仓库**: https://github.com/lxgw/LxgwWenkaiGB
+- **Webfont 分片包**: https://github.com/Alice39s/lxgw-webfont
+- **CDN (Regular)**: https://cdn.jsdelivr.net/npm/lxgw-wenkai-gb-web@latest/lxgwwenkaigb-regular/result.css
+- **CDN (Bold)**: https://cdn.jsdelivr.net/npm/lxgw-wenkai-gb-web@latest/lxgwwenkaigb-bold/result.css
+- **字体许可证**: [SIL Open Font License 1.1](https://openfontlicense.org/)
+
+### Inter
+
+用于 UI 元素（导航栏、TOC、元信息等）的无衬线字体。
+
+- **字体仓库**: https://github.com/rsms/inter
+- **CDN**: https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap
+- **字体许可证**: [SIL Open Font License 1.1](https://openfontlicense.org/)
+
+## 许可证
+
+主题代码基于 [MIT License](LICENSE) 发布。
+
+引用的字体资源各自遵循 [SIL Open Font License 1.1](https://openfontlicense.org/) 许可证。
