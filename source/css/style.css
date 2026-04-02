@@ -478,6 +478,7 @@ figure.highlight {
 
 figure.highlight table {
   width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   margin: 0;
 }
