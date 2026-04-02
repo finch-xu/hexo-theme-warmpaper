@@ -1,0 +1,29 @@
+<article class="post-card">
+  <h2 class="post-card-title">
+    <a href="<%- url_for(post.path) %>"><%= post.title || '(Untitled)' %></a>
+  </h2>
+  <div class="post-card-meta">
+    <time datetime="<%- date_xml(post.date) %>"><%- date(post.date, 'YYYY-MM-DD') %></time>
+    <% if (post.categories && post.categories.length) { %>
+      <span class="separator">&middot;</span>
+      <% post.categories.each(function(cat){ %>
+        <a href="<%- url_for(cat.path) %>"><%= cat.name %></a>
+      <% }) %>
+    <% } %>
+  </div>
+  <div class="post-card-excerpt">
+    <% if (post.excerpt) { %>
+      <%- post.excerpt %>
+    <% } else { %>
+      <p><%- strip_html(post.content).substring(0, 200) %>...</p>
+    <% } %>
+  </div>
+  <a class="read-more" href="<%- url_for(post.path) %>"><%= theme.excerpt_link || 'Read More' %> &rarr;</a>
+  <% if (post.tags && post.tags.length) { %>
+    <div class="post-card-tags">
+      <% post.tags.each(function(tag){ %>
+        <a href="<%- url_for(tag.path) %>">#<%= tag.name %></a>
+      <% }) %>
+    </div>
+  <% } %>
+</article>

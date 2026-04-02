@@ -1,0 +1,12 @@
+<div class="archive">
+  <h1 class="category-title"><span>#</span> <%= page.category %></h1>
+  <% page.posts.each(function(post){ %>
+    <div class="archive-post">
+      <span class="archive-post-date"><%- date(post.date, 'YYYY-MM-DD') %></span>
+      <span class="archive-post-title">
+        <a href="<%- url_for(post.path) %>"><%= post.title || '(Untitled)' %></a>
+      </span>
+    </div>
+  <% }) %>
+  <%- partial('partial/pagination') %>
+</div>
