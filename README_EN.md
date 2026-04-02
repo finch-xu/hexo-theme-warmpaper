@@ -1,6 +1,7 @@
 <div align="center">
   <img src="source/images/logo.svg" alt="Warmpaper Logo" width="120">
   <h1>hexo-theme-warmpaper</h1>
+  <p><em>"8000 years ago, a Halafian potter painted the same radiating pattern that an AI company would choose as its logo — some visual instincts are older than civilization itself."</em></p>
   <p>A warm Hexo blog theme inspired by Claude's color palette.<br>Beige background with a subtle orange grid-paper texture for an immersive reading experience.</p>
 
   [![GitHub License](https://img.shields.io/github/license/finch-xu/hexo-theme-warmpaper?color=DA7756)](LICENSE)
@@ -10,8 +11,6 @@
 
   **Live Demo**: [pidan.dev](https://pidan.dev) | [中文](README.md)
 </div>
-
-> "8000 years ago, a Halafian potter painted the same radiating pattern that an AI company would choose as its logo — some visual instincts are older than civilization itself."
 
 <table>
   <tr>

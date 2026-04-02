@@ -1,6 +1,7 @@
 <div align="center">
   <img src="source/images/logo.svg" alt="Warmpaper Logo" width="120">
   <h1>hexo-theme-warmpaper</h1>
+  <p><em>「八千年前的陶工与今天的 AI，不约而同画出了同一个图形——有些直觉，比文明更古老。」</em></p>
   <p>一个温暖的 Hexo 博客主题，灵感来自 Claude 的配色方案。<br>米色背景搭配淡橙色方格草稿纸纹理，营造沉浸式阅读体验。</p>
 
   [![GitHub License](https://img.shields.io/github/license/finch-xu/hexo-theme-warmpaper?color=DA7756)](LICENSE)
@@ -10,8 +11,6 @@
 
   **在线预览**: [pidan.dev](https://pidan.dev) | [English](README_EN.md)
 </div>
-
-> 「八千年前的陶工与今天的 AI，不约而同画出了同一个图形——有些直觉，比文明更古老。」
 
 <table>
   <tr>
