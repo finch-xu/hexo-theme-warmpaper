@@ -1,6 +1,15 @@
-# hexo-theme-warmpaper
+<div align="center">
+  <img src="source/images/logo.svg" alt="Warmpaper Logo" width="120">
+  <h1>hexo-theme-warmpaper</h1>
+  <p>一个温暖的 Hexo 博客主题，灵感来自 Claude 的配色方案。<br>米色背景搭配淡橙色方格草稿纸纹理，营造沉浸式阅读体验。</p>
 
-一个温暖的 Hexo 博客主题，灵感来自 Claude 的配色方案。米色背景搭配淡橙色方格草稿纸纹理，营造沉浸式阅读体验。
+  [![GitHub License](https://img.shields.io/github/license/finch-xu/hexo-theme-warmpaper?color=DA7756)](LICENSE)
+  [![Hexo Version](https://img.shields.io/badge/hexo-%3E%3D5.0.0-DA7756)](https://hexo.io)
+  [![Node Version](https://img.shields.io/badge/node-%3E%3D20-DA7756)](https://nodejs.org)
+  [![GitHub Stars](https://img.shields.io/github/stars/finch-xu/hexo-theme-warmpaper?style=flat&color=DA7756)](https://github.com/finch-xu/hexo-theme-warmpaper)
+</div>
+
+---
 
 ## 特性
 
