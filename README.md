@@ -198,6 +198,8 @@ hexo-theme-warmpaper/
 └── source/
     ├── css/
     │   └── style.css        # 主样式表
+    ├── images/
+    │   └── logo.svg         # 主题默认 Logo
     └── js/
         └── main.js          # TOC 滚动追踪
 ```

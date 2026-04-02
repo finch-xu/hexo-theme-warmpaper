@@ -14,7 +14,7 @@ toc:
 
 # Profile (shown on homepage above post list)
 profile:
-  avatar: /images/avatar.png
+  avatar: /images/logo.svg
   description: ""
   links:
     - name: GitHub

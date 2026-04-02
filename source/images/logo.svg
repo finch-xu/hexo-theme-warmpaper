@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Soft polygon background -->
+  <polygon points="100,8 155,22 188,65 195,120 172,170 125,195 72,195 28,170 8,120 12,65 45,22"
+    fill="#F5E6E0" />
+  <!-- Flower petals -->
+  <g transform="translate(100,105)">
+    <ellipse rx="14" ry="38" fill="#C46A42" transform="rotate(0)"/>
+    <ellipse rx="14" ry="38" fill="#C46A42" transform="rotate(45)"/>
+    <ellipse rx="14" ry="38" fill="#C46A42" transform="rotate(90)"/>
+    <ellipse rx="14" ry="38" fill="#C46A42" transform="rotate(135)"/>
+    <ellipse rx="14" ry="38" fill="#C46A42" transform="rotate(180)"/>
+    <ellipse rx="14" ry="38" fill="#C46A42" transform="rotate(225)"/>
+    <ellipse rx="14" ry="38" fill="#C46A42" transform="rotate(270)"/>
+    <ellipse rx="14" ry="38" fill="#C46A42" transform="rotate(315)"/>
+    <!-- Center dot -->
+    <circle r="10" fill="#8B4230"/>
+  </g>
+</svg>
