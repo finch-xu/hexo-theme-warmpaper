@@ -4,6 +4,9 @@
   "description": "A warm, Claude-inspired Hexo blog theme with graph paper background",
   "keywords": ["hexo-theme"],
   "license": "MIT",
+  "engines": {
+    "hexo": ">=5.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/finch-xu/hexo-theme-warmpaper"
