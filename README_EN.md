@@ -235,7 +235,7 @@ An open-source Kai-style font used for site-wide typography, derived from FONTWO
 - **Font repo**: https://github.com/lxgw/LxgwWenkaiGB
 - **Webfont subsets**: https://github.com/CMBill/lxgw-wenkai-gb-web
 - **CDN (Regular)**: https://cdn.jsdelivr.net/npm/lxgw-wenkai-gb-web@latest/lxgwwenkaigb-regular/result.css
-- **CDN (Bold)**: https://cdn.jsdelivr.net/npm/lxgw-wenkai-gb-web@latest/lxgwwenkaigb-bold/result.css
+- **CDN (Medium)**: https://cdn.jsdelivr.net/npm/lxgw-wenkai-gb-web@latest/lxgwwenkaigb-medium/result.css
 - **Font license**: [SIL Open Font License 1.1](https://openfontlicense.org/)
 
 ## License

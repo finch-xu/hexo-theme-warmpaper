@@ -235,7 +235,7 @@ hexo-theme-warmpaper/
 - **字体原仓库**: https://github.com/lxgw/LxgwWenkaiGB
 - **Webfont 分片包**: https://github.com/CMBill/lxgw-wenkai-gb-web
 - **CDN (Regular)**: https://cdn.jsdelivr.net/npm/lxgw-wenkai-gb-web@latest/lxgwwenkaigb-regular/result.css
-- **CDN (Bold)**: https://cdn.jsdelivr.net/npm/lxgw-wenkai-gb-web@latest/lxgwwenkaigb-bold/result.css
+- **CDN (Medium)**: https://cdn.jsdelivr.net/npm/lxgw-wenkai-gb-web@latest/lxgwwenkaigb-medium/result.css
 - **字体许可证**: [SIL Open Font License 1.1](https://openfontlicense.org/)
 
 ## 许可证
