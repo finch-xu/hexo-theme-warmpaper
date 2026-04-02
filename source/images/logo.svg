@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -55 100 110" width="512" height="563">
+  <!-- Irregular shard shape -->
+  <path fill="#C15F3C" opacity="0.15" stroke="#C15F3C" stroke-width="1.2" d="M-40,-35 L-10,-48 L25,-42 L42,-20 L38,10 L30,35 L5,42 L-25,38 L-42,15 L-44,-10Z"/>
+  <!-- Flower pattern painted on the shard -->
+  <ellipse fill="#C15F3C" cx="0" cy="-18" rx="4" ry="13" transform="rotate(0, 0, 0)"/>
+  <ellipse fill="#C15F3C" cx="0" cy="-16" rx="3.5" ry="11" transform="rotate(52, 0, 0)"/>
+  <ellipse fill="#C15F3C" cx="0" cy="-19" rx="4" ry="14" transform="rotate(100, 0, 0)"/>
+  <ellipse fill="#C15F3C" cx="0" cy="-15" rx="3.5" ry="10" transform="rotate(155, 0, 0)"/>
+  <ellipse fill="#C15F3C" cx="0" cy="-17" rx="4" ry="12" transform="rotate(205, 0, 0)"/>
+  <ellipse fill="#C15F3C" cx="0" cy="-18" rx="3.8" ry="13" transform="rotate(258, 0, 0)"/>
+  <ellipse fill="#C15F3C" cx="0" cy="-16" rx="3.5" ry="11" transform="rotate(310, 0, 0)"/>
+  <!-- Center dot -->
+  <circle fill="#9A4A2E" cx="0" cy="0" r="3.5"/>
+</svg>

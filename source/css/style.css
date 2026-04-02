@@ -156,15 +156,8 @@ img {
 .profile-avatar {
   width: 88px;
   height: 88px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--color-border-light);
+  object-fit: contain;
   margin-bottom: 0.75rem;
-  transition: border-color 0.3s;
-}
-
-.profile-avatar:hover {
-  border-color: var(--color-accent);
 }
 
 .profile-name {
