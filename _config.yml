@@ -18,14 +18,14 @@ profile:
   description: ""
   links:
     - name: GitHub
-      url: https://github.com/yourname
+      url: https://github.com/finch-xu/
       icon: github
     # - name: Email
     #   url: mailto:your@email.com
     #   icon: email
-    # - name: Website
-    #   url: https://yoursite.com
-    #   icon: website
+    - name: Website
+      url: https://pidan.dev
+      icon: website
     # - name: Twitter
     #   url: https://twitter.com/yourname
     #   icon: twitter
