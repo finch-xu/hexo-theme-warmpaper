@@ -192,7 +192,7 @@ hexo-theme-warmpaper/
 
 ### 霞鹜文楷 GB (LXGW WenKai GB)
 
-用于中文正文排版的开源楷体字体，基于 FONTWORKS Klee One 衍生，符合大陆 G 源字形标准。
+用于全站排版的开源楷体字体（正文、导航栏、TOC 等均统一使用），基于 FONTWORKS Klee One 衍生，符合大陆 G 源字形标准。
 
 - **字体原仓库**: https://github.com/lxgw/LxgwWenkaiGB
 - **Webfont 分片包**: https://github.com/CMBill/lxgw-wenkai-gb-web
@@ -200,16 +200,8 @@ hexo-theme-warmpaper/
 - **CDN (Bold)**: https://cdn.jsdelivr.net/npm/lxgw-wenkai-gb-web@latest/lxgwwenkaigb-bold/result.css
 - **字体许可证**: [SIL Open Font License 1.1](https://openfontlicense.org/)
 
-### Inter
-
-用于 UI 元素（导航栏、TOC、元信息等）的无衬线字体。
-
-- **字体仓库**: https://github.com/rsms/inter
-- **CDN**: https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap
-- **字体许可证**: [SIL Open Font License 1.1](https://openfontlicense.org/)
-
 ## 许可证
 
 主题代码基于 [MIT License](LICENSE) 发布。
 
-引用的字体资源各自遵循 [SIL Open Font License 1.1](https://openfontlicense.org/) 许可证。
+引用的字体资源遵循 [SIL Open Font License 1.1](https://openfontlicense.org/) 许可证。
