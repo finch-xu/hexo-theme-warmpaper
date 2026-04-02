@@ -26,6 +26,9 @@ profile:
     - name: Website
       url: https://pidan.dev
       icon: website
+    - name: 雨云VPS
+      url: https://www.rainyun.com/ODA1MzUy_?s=pidan.dev
+      icon: website
     # - name: Twitter
     #   url: https://twitter.com/yourname
     #   icon: twitter
