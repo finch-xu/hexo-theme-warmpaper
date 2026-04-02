@@ -7,7 +7,18 @@
   [![Hexo Version](https://img.shields.io/badge/hexo-%3E%3D5.0.0-DA7756)](https://hexo.io)
   [![Node Version](https://img.shields.io/badge/node-%3E%3D20-DA7756)](https://nodejs.org)
   [![GitHub Stars](https://img.shields.io/github/stars/finch-xu/hexo-theme-warmpaper?style=flat&color=DA7756)](https://github.com/finch-xu/hexo-theme-warmpaper)
+
+  **在线预览**: [pidan.dev](https://pidan.dev) | [English](README_EN.md)
 </div>
+
+> 「八千年前的陶工与今天的 AI，不约而同画出了同一个图形——有些直觉，比文明更古老。」
+
+<table>
+  <tr>
+    <td><img src="screenshots/home.png" alt="首页"></td>
+    <td><img src="screenshots/post.png" alt="文章页"></td>
+  </tr>
+</table>
 
 ---
 
