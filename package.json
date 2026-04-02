@@ -1,0 +1,11 @@
+{
+  "name": "hexo-theme-warmpaper",
+  "version": "0.1.0",
+  "description": "A warm, Claude-inspired Hexo blog theme with graph paper background",
+  "keywords": ["hexo-theme"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/finch-xu/hexo-theme-warmpaper"
+  }
+}

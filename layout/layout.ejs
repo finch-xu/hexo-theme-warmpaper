@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="<%= config.language || 'en' %>">
+<%- partial('partial/head') %>
+<body>
+  <div class="site-wrapper">
+    <%- partial('partial/header') %>
+    <main class="main-content">
+      <%- body %>
+    </main>
+    <%- partial('partial/footer') %>
+  </div>
+  <%- js('js/main') %>
+</body>
+</html>

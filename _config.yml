@@ -1,0 +1,19 @@
+# Warmpaper Theme Configuration
+
+# Navigation menu
+menu:
+  Home: /
+  Archives: /archives
+
+# Table of Contents (right sidebar on post pages)
+toc:
+  enable: true
+  max_depth: 3
+  min_depth: 2
+  list_number: false
+
+# Post excerpt
+excerpt_link: Read More
+
+# Footer
+copyright: ""

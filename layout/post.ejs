@@ -1,0 +1,50 @@
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><%= page.title %></h1>
+    <div class="post-meta">
+      <time datetime="<%- date_xml(page.date) %>"><%- date(page.date, 'YYYY-MM-DD') %></time>
+      <% if (page.categories && page.categories.length) { %>
+        <span class="separator">&middot;</span>
+        <% page.categories.each(function(cat){ %>
+          <a href="<%- url_for(cat.path) %>"><%= cat.name %></a>
+        <% }) %>
+      <% } %>
+    </div>
+  </header>
+
+  <div class="post-body-wrapper">
+    <div class="post-content">
+      <%- page.content %>
+    </div>
+
+    <% if (theme.toc && theme.toc.enable) {
+      var tocContent = toc(page.content, {
+        class: 'toc',
+        list_number: theme.toc.list_number || false,
+        max_depth: theme.toc.max_depth || 3,
+        min_depth: theme.toc.min_depth || 2
+      });
+      if (tocContent) { %>
+        <%- partial('partial/toc', {tocContent: tocContent}) %>
+      <% }
+    } %>
+  </div>
+
+  <footer class="post-footer">
+    <% if (page.tags && page.tags.length) { %>
+      <div class="post-tags">
+        <% page.tags.each(function(tag){ %>
+          <a href="<%- url_for(tag.path) %>">#<%= tag.name %></a>
+        <% }) %>
+      </div>
+    <% } %>
+    <nav class="post-nav">
+      <% if (page.prev) { %>
+        <a class="prev" href="<%- url_for(page.prev.path) %>">&laquo; <%= page.prev.title %></a>
+      <% } %>
+      <% if (page.next) { %>
+        <a class="next" href="<%- url_for(page.next.path) %>"><%= page.next.title %> &raquo;</a>
+      <% } %>
+    </nav>
+  </footer>
+</article>
