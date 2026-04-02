@@ -123,6 +123,14 @@ img {
   font-weight: 700;
   color: var(--color-text);
   letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.site-logo {
+  width: 28px;
+  height: 28px;
 }
 
 .site-title:hover {

@@ -1,6 +1,6 @@
 <header class="site-header">
   <div class="header-inner">
-    <a class="site-title" href="<%- url_for('/') %>"><%= config.title %></a>
+    <a class="site-title" href="<%- url_for('/') %>"><img class="site-logo" src="<%- url_for('/images/logo.svg') %>" alt="Logo"><%= config.title %></a>
     <nav class="site-nav">
       <% for (var name in theme.menu) { %>
         <a class="nav-link" href="<%- url_for(theme.menu[name]) %>"><%= name %></a>
