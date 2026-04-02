@@ -12,6 +12,27 @@ toc:
   min_depth: 2
   list_number: false
 
+# Profile (shown on homepage above post list)
+profile:
+  avatar: /images/avatar.png
+  description: ""
+  links:
+    - name: GitHub
+      url: https://github.com/yourname
+      icon: github
+    # - name: Email
+    #   url: mailto:your@email.com
+    #   icon: email
+    # - name: Website
+    #   url: https://yoursite.com
+    #   icon: website
+    # - name: Twitter
+    #   url: https://twitter.com/yourname
+    #   icon: twitter
+    # - name: RSS
+    #   url: /atom.xml
+    #   icon: rss
+
 # Post excerpt
 excerpt_link: Read More
 

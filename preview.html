@@ -90,6 +90,17 @@
     .view-btn:hover { border-color: var(--color-accent); color: var(--color-accent); }
     .view-btn.active { background: var(--color-accent); color: white; border-color: var(--color-accent); }
 
+    /* Profile card */
+    .profile-card { max-width: var(--content-width); margin: 0 auto 2rem; text-align: center; padding: 2rem 1.5rem 1.75rem; }
+    .profile-avatar { width: 88px; height: 88px; border-radius: 50%; object-fit: cover; border: 3px solid var(--color-border-light); margin-bottom: 0.75rem; transition: border-color 0.3s; }
+    .profile-avatar:hover { border-color: var(--color-accent); }
+    .profile-name { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.35rem; }
+    .profile-description { font-size: 0.92rem; color: var(--color-text-secondary); margin-bottom: 1rem; line-height: 1.6; }
+    .profile-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.6rem; }
+    .profile-link { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.82rem; color: var(--color-text-tertiary); padding: 0.3rem 0.7rem; border-radius: 4px; border: 1px solid var(--color-border-light); background: var(--color-surface); transition: color 0.2s, border-color 0.2s, background 0.2s; }
+    .profile-link:hover { color: var(--color-accent); border-color: var(--color-accent); background: var(--color-surface-hover); }
+    .profile-icon { width: 15px; height: 15px; flex-shrink: 0; }
+
     /* Post list */
     .post-list { display: flex; flex-direction: column; gap: 1.25rem; max-width: var(--content-width); margin: 0 auto; }
     .post-card {
@@ -253,6 +264,31 @@
 
       <!-- ==================== HOME VIEW ==================== -->
       <div class="view-home active">
+        <!-- Profile Card -->
+        <div class="profile-card">
+          <img class="profile-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 88 88'%3E%3Crect fill='%23E5E0D8' width='88' height='88' rx='44'/%3E%3Ctext x='44' y='52' text-anchor='middle' fill='%236B6560' font-size='32'%3E%F0%9F%90%B1%3C/text%3E%3C/svg%3E" alt="Avatar">
+          <h2 class="profile-name">Warmpaper Blog</h2>
+          <p class="profile-description">A warm place for thoughts and code.</p>
+          <div class="profile-links">
+            <a class="profile-link" href="#" title="GitHub">
+              <svg class="profile-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+            <a class="profile-link" href="#" title="Email">
+              <svg class="profile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+              <span>Email</span>
+            </a>
+            <a class="profile-link" href="#" title="Website">
+              <svg class="profile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              <span>Website</span>
+            </a>
+            <a class="profile-link" href="#" title="Twitter">
+              <svg class="profile-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              <span>Twitter</span>
+            </a>
+          </div>
+        </div>
+
         <div class="post-list">
 
           <article class="post-card">

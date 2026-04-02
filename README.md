@@ -144,6 +144,21 @@ menu:
   Home: /
   Archives: /archives
 
+# 个人资料卡片（首页文章列表上方）
+profile:
+  avatar: /images/avatar.png     # 头像图片路径
+  description: "一句话简介"       # 个人简介
+  links:                         # 社交链接（可配置任意数量）
+    - name: GitHub
+      url: https://github.com/yourname
+      icon: github               # 支持: github, email, website, twitter, rss, bilibili, zhihu
+    - name: Email
+      url: mailto:your@email.com
+      icon: email
+    - name: Website
+      url: https://yoursite.com
+      icon: website
+
 # 文章目录（右侧边栏）
 toc:
   enable: true
@@ -176,6 +191,7 @@ hexo-theme-warmpaper/
 │       ├── head.ejs         # HTML head
 │       ├── header.ejs       # 导航栏
 │       ├── footer.ejs       # 页脚
+│       ├── profile.ejs      # 个人资料卡片
 │       ├── post-card.ejs    # 文章卡片
 │       ├── pagination.ejs   # 分页
 │       └── toc.ejs          # 目录侧边栏
