@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <title>Warmpaper Theme Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* === Theme CSS (inline for preview) === */
+    :root {
+      --color-bg: #FAF9F7;
+      --color-surface: #FFFFFF;
+      --color-surface-hover: #FDF8F4;
+      --color-code-bg: #F0EBE3;
+      --color-accent: #DA7756;
+      --color-accent-hover: #C4684A;
+      --color-text: #2D2B28;
+      --color-text-secondary: #6B6560;
+      --color-text-tertiary: #9B9490;
+      --color-border: #E5E0D8;
+      --color-border-light: #EEEAE4;
+      --grid-color: rgba(218, 119, 86, 0.07);
+      --grid-color-strong: rgba(218, 119, 86, 0.12);
+      --grid-size: 24px;
+      --content-width: 720px;
+      --page-width: 1080px;
+      --sidebar-width: 220px;
+      --header-height: 60px;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --font-serif: 'Noto Serif SC', 'Georgia', 'Times New Roman', serif;
+      --font-mono: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+      --radius: 8px;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+      --shadow-card-hover: 0 4px 12px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.03);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height) + 1rem); }
+    body {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      background-image:
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
+        linear-gradient(var(--grid-color-strong) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color-strong) 1px, transparent 1px);
+      background-size:
+        var(--grid-size) var(--grid-size),
+        var(--grid-size) var(--grid-size),
+        calc(var(--grid-size) * 4) calc(var(--grid-size) * 4),
+        calc(var(--grid-size) * 4) calc(var(--grid-size) * 4);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--color-accent); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--color-accent-hover); }
+    img { max-width: 100%; height: auto; }
+    .site-wrapper { min-height: 100vh; display: flex; flex-direction: column; }
+    .main-content { flex: 1; width: 100%; max-width: var(--page-width); margin: 0 auto; padding: 2rem 1.5rem; }
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background-color: rgba(250, 249, 247, 0.85);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .header-inner {
+      max-width: var(--page-width); margin: 0 auto; padding: 0 1.5rem;
+      height: var(--header-height); display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-title { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; color: var(--color-text); letter-spacing: -0.01em; }
+    .site-title:hover { color: var(--color-accent); }
+    .site-nav { display: flex; gap: 1.5rem; }
+    .nav-link { font-size: 0.9rem; font-weight: 500; color: var(--color-text-secondary); transition: color 0.2s; }
+    .nav-link:hover { color: var(--color-accent); }
+    .nav-link.active { color: var(--color-accent); }
+
+    /* View switcher */
+    .view-switcher {
+      display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 2rem;
+    }
+    .view-btn {
+      padding: 0.5rem 1.25rem; border-radius: 6px; border: 1px solid var(--color-border);
+      background: var(--color-surface); color: var(--color-text-secondary);
+      font-family: var(--font-sans); font-size: 0.88rem; font-weight: 500;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .view-btn:hover { border-color: var(--color-accent); color: var(--color-accent); }
+    .view-btn.active { background: var(--color-accent); color: white; border-color: var(--color-accent); }
+
+    /* Post list */
+    .post-list { display: flex; flex-direction: column; gap: 1.25rem; max-width: var(--content-width); margin: 0 auto; }
+    .post-card {
+      background: var(--color-surface); border-radius: var(--radius); padding: 1.5rem 1.75rem;
+      box-shadow: var(--shadow-card); border: 1px solid var(--color-border-light);
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .post-card:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-2px); }
+    .post-card-title { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 700; line-height: 1.4; margin-bottom: 0.5rem; }
+    .post-card-title a { color: var(--color-text); }
+    .post-card-title a:hover { color: var(--color-accent); }
+    .post-card-meta { display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; color: var(--color-text-tertiary); margin-bottom: 0.75rem; }
+    .post-card-meta .separator { color: var(--color-border); }
+    .post-card-excerpt { font-size: 0.95rem; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 0.75rem; }
+    .read-more { font-size: 0.88rem; font-weight: 500; color: var(--color-accent); }
+    .read-more:hover { color: var(--color-accent-hover); }
+    .post-card-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+    .post-card-tags a {
+      font-size: 0.78rem; color: var(--color-text-tertiary); background: var(--color-bg);
+      padding: 0.15rem 0.55rem; border-radius: 3px; transition: color 0.2s, background 0.2s;
+    }
+    .post-card-tags a:hover { color: var(--color-accent); background: var(--color-surface-hover); }
+
+    /* Post detail */
+    .post-header { max-width: var(--content-width); margin: 0 auto 2rem; text-align: center; }
+    .post-title-detail { font-family: var(--font-serif); font-size: 2rem; font-weight: 700; line-height: 1.35; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+    .post-meta { display: flex; justify-content: center; align-items: center; gap: 0.75rem; font-size: 0.88rem; color: var(--color-text-tertiary); flex-wrap: wrap; }
+    .post-meta .separator { color: var(--color-border); }
+    .post-body-wrapper { display: flex; gap: 3rem; max-width: calc(var(--content-width) + var(--sidebar-width) + 3rem); margin: 0 auto; align-items: flex-start; }
+    .post-content {
+      flex: 1; min-width: 0; max-width: var(--content-width);
+      font-family: var(--font-serif); font-size: 1.06rem; line-height: 1.85;
+    }
+    .post-content h2, .post-content h3, .post-content h4 { font-family: var(--font-serif); color: var(--color-text); font-weight: 700; line-height: 1.35; margin-top: 2em; margin-bottom: 0.75em; }
+    .post-content h2 { font-size: 1.45rem; }
+    .post-content h3 { font-size: 1.2rem; }
+    .post-content p { margin-bottom: 1.25em; }
+    .post-content a { color: var(--color-accent); text-decoration: underline; text-decoration-color: rgba(218,119,86,0.3); text-underline-offset: 2px; }
+    .post-content a:hover { text-decoration-color: var(--color-accent); }
+    .post-content blockquote {
+      border-left: 3px solid var(--color-accent); padding: 0.5em 1.25em; margin: 1.5em 0;
+      color: var(--color-text-secondary); background: rgba(218,119,86,0.04); border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .post-content blockquote p:last-child { margin-bottom: 0; }
+    .post-content ul, .post-content ol { padding-left: 1.5em; margin-bottom: 1.25em; }
+    .post-content li { margin-bottom: 0.35em; }
+    .post-content code {
+      font-family: var(--font-mono); font-size: 0.88em; background: var(--color-code-bg);
+      padding: 0.15em 0.4em; border-radius: 3px; color: var(--color-text);
+    }
+    .post-content pre {
+      background: var(--color-code-bg); border-radius: var(--radius); padding: 1.25em;
+      margin: 1.5em 0; overflow-x: auto; line-height: 1.55; border: 1px solid var(--color-border-light);
+    }
+    .post-content pre code { background: none; padding: 0; font-size: 0.88rem; }
+    .post-content table { width: 100%; border-collapse: collapse; margin: 1.5em 0; font-size: 0.95rem; }
+    .post-content th, .post-content td { padding: 0.6em 1em; border: 1px solid var(--color-border); text-align: left; }
+    .post-content th { background: var(--color-code-bg); font-weight: 600; }
+    .post-content tr:nth-child(even) { background: rgba(240,235,227,0.3); }
+    .post-content img { border-radius: var(--radius); margin: 1em 0; }
+    .post-content hr { border: none; height: 1px; background: var(--color-border); margin: 2em 0; }
+
+    /* TOC sidebar */
+    .toc-sidebar { width: var(--sidebar-width); flex-shrink: 0; }
+    .toc-wrapper {
+      position: sticky; top: calc(var(--header-height) + 2rem);
+      max-height: calc(100vh - var(--header-height) - 4rem);
+      overflow-y: auto; padding-left: 1rem; border-left: 1px solid var(--color-border-light);
+    }
+    .toc-title {
+      font-family: var(--font-sans); font-size: 0.78rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-tertiary); margin-bottom: 0.75rem;
+    }
+    .toc-list { list-style: none; padding: 0; }
+    .toc-list ol { list-style: none; padding-left: 0.85rem; }
+    .toc-list li { margin-bottom: 0.25rem; }
+    .toc-list a {
+      font-family: var(--font-sans); font-size: 0.82rem; color: var(--color-text-tertiary);
+      display: block; padding: 0.2rem 0; line-height: 1.45; transition: color 0.2s;
+    }
+    .toc-list a:hover { color: var(--color-text); }
+    .toc-list a.active { color: var(--color-accent); font-weight: 500; }
+
+    /* Post footer */
+    .post-footer-section {
+      max-width: var(--content-width); margin: 3rem auto 0;
+      padding-top: 1.5rem; border-top: 1px solid var(--color-border-light);
+    }
+    .post-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .post-tags a {
+      font-size: 0.82rem; color: var(--color-text-tertiary); background: var(--color-surface);
+      padding: 0.2rem 0.65rem; border-radius: 3px; border: 1px solid var(--color-border-light); transition: color 0.2s, border-color 0.2s;
+    }
+    .post-tags a:hover { color: var(--color-accent); border-color: var(--color-accent); }
+    .post-nav { display: flex; justify-content: space-between; gap: 1rem; }
+    .post-nav a { font-size: 0.9rem; color: var(--color-text-secondary); max-width: 45%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .post-nav a:hover { color: var(--color-accent); }
+
+    /* Pagination */
+    .pagination { display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin-top: 2.5rem; font-size: 0.9rem; }
+    .pagination a, .pagination span {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 2rem; height: 2rem; padding: 0 0.5rem; border-radius: 4px;
+      color: var(--color-text-secondary); transition: color 0.2s, background 0.2s;
+    }
+    .pagination a:hover { color: var(--color-accent); background: var(--color-surface); }
+    .pagination .current { color: var(--color-surface); background: var(--color-accent); font-weight: 600; }
+
+    /* Site footer */
+    .site-footer {
+      margin-top: 3rem; padding: 1.5rem; text-align: center;
+      font-size: 0.82rem; color: var(--color-text-tertiary); border-top: 1px solid var(--color-border-light);
+    }
+    .site-footer p { margin: 0.25rem 0; }
+    .site-footer a { color: var(--color-text-secondary); }
+    .site-footer a:hover { color: var(--color-accent); }
+
+    /* View toggle */
+    .view-home, .view-post { display: none; }
+    .view-home.active, .view-post.active { display: block; }
+
+    /* Responsive */
+    @media (max-width: 1080px) {
+      .toc-sidebar { display: none; }
+      .post-body-wrapper { max-width: var(--content-width); }
+    }
+    @media (max-width: 768px) {
+      :root { --header-height: 52px; }
+      body { font-size: 15px; }
+      .main-content { padding: 1.5rem 1rem; }
+      .header-inner { padding: 0 1rem; }
+      .post-title-detail { font-size: 1.5rem; }
+      .post-card { padding: 1.25rem; }
+      .post-card-title { font-size: 1.15rem; }
+      .post-content { font-size: 1rem; }
+      .post-nav { flex-direction: column; }
+      .post-nav a { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-wrapper">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="site-title" href="#">Warmpaper Blog</a>
+        <nav class="site-nav">
+          <a class="nav-link active" href="#" onclick="switchView('home')">Home</a>
+          <a class="nav-link" href="#">Archives</a>
+          <a class="nav-link" href="#">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <!-- View Switcher -->
+      <div class="view-switcher">
+        <button class="view-btn active" onclick="switchView('home')">首页 / Homepage</button>
+        <button class="view-btn" onclick="switchView('post')">文章页 / Post Page</button>
+      </div>
+
+      <!-- ==================== HOME VIEW ==================== -->
+      <div class="view-home active">
+        <div class="post-list">
+
+          <article class="post-card">
+            <h2 class="post-card-title"><a href="#" onclick="switchView('post'); return false;">使用 Rust 构建高性能 Web 服务</a></h2>
+            <div class="post-card-meta">
+              <time>2026-03-28</time>
+              <span class="separator">&middot;</span>
+              <a href="#">技术</a>
+            </div>
+            <div class="post-card-excerpt">
+              <p>Rust 以其内存安全和零成本抽象而闻名。本文将探讨如何利用 Actix-web 框架从零搭建一个高性能的 RESTful API 服务，涵盖路由设计、中间件、数据库连接池等核心概念。</p>
+            </div>
+            <a class="read-more" href="#" onclick="switchView('post'); return false;">Read More &rarr;</a>
+            <div class="post-card-tags">
+              <a href="#">#Rust</a>
+              <a href="#">#Web</a>
+              <a href="#">#后端</a>
+            </div>
+          </article>
+
+          <article class="post-card">
+            <h2 class="post-card-title"><a href="#">CSS Container Queries 实战指南</a></h2>
+            <div class="post-card-meta">
+              <time>2026-03-22</time>
+              <span class="separator">&middot;</span>
+              <a href="#">前端</a>
+            </div>
+            <div class="post-card-excerpt">
+              <p>Container Queries 终于得到了主流浏览器的支持！这意味着我们可以根据组件容器的大小来调整样式，而不仅仅依赖于视口宽度。让我们通过实际案例来看看它如何改变响应式设计的方式。</p>
+            </div>
+            <a class="read-more" href="#">Read More &rarr;</a>
+            <div class="post-card-tags">
+              <a href="#">#CSS</a>
+              <a href="#">#响应式</a>
+              <a href="#">#前端</a>
+            </div>
+          </article>
+
+          <article class="post-card">
+            <h2 class="post-card-title"><a href="#">我的 2026 年阅读书单</a></h2>
+            <div class="post-card-meta">
+              <time>2026-03-15</time>
+              <span class="separator">&middot;</span>
+              <a href="#">随笔</a>
+            </div>
+            <div class="post-card-excerpt">
+              <p>新年伊始，整理了今年计划阅读的书单。涵盖技术、哲学、文学三个方向。技术类重点关注分布式系统和编程语言设计；哲学类继续深入存在主义；文学类则想多读一些拉美文学作品。</p>
+            </div>
+            <a class="read-more" href="#">Read More &rarr;</a>
+            <div class="post-card-tags">
+              <a href="#">#阅读</a>
+              <a href="#">#书单</a>
+            </div>
+          </article>
+
+          <article class="post-card">
+            <h2 class="post-card-title"><a href="#">从零理解 Transformer 架构</a></h2>
+            <div class="post-card-meta">
+              <time>2026-03-08</time>
+              <span class="separator">&middot;</span>
+              <a href="#">AI</a>
+            </div>
+            <div class="post-card-excerpt">
+              <p>Transformer 是现代大语言模型的基石。本文从注意力机制出发，一步步推导 Self-Attention、Multi-Head Attention 的数学原理，并用 PyTorch 实现一个最简版本。</p>
+            </div>
+            <a class="read-more" href="#">Read More &rarr;</a>
+            <div class="post-card-tags">
+              <a href="#">#AI</a>
+              <a href="#">#深度学习</a>
+              <a href="#">#Transformer</a>
+            </div>
+          </article>
+
+          <article class="post-card">
+            <h2 class="post-card-title"><a href="#">Git 工作流最佳实践</a></h2>
+            <div class="post-card-meta">
+              <time>2026-02-28</time>
+              <span class="separator">&middot;</span>
+              <a href="#">工具</a>
+            </div>
+            <div class="post-card-excerpt">
+              <p>在团队协作中，一个好的 Git 工作流能够极大提升效率。本文比较了 Git Flow、GitHub Flow 和 Trunk-Based Development 三种策略的优劣，并给出不同团队规模的建议。</p>
+            </div>
+            <a class="read-more" href="#">Read More &rarr;</a>
+            <div class="post-card-tags">
+              <a href="#">#Git</a>
+              <a href="#">#工程化</a>
+            </div>
+          </article>
+
+        </div>
+
+        <nav class="pagination">
+          <span class="current">1</span>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <a href="#">Next &raquo;</a>
+        </nav>
+      </div>
+
+      <!-- ==================== POST VIEW ==================== -->
+      <div class="view-post">
+        <article>
+          <header class="post-header">
+            <h1 class="post-title-detail">使用 Rust 构建高性能 Web 服务</h1>
+            <div class="post-meta">
+              <time>2026-03-28</time>
+              <span class="separator">&middot;</span>
+              <a href="#">技术</a>
+              <span class="separator">&middot;</span>
+              <span>约 12 分钟</span>
+            </div>
+          </header>
+
+          <div class="post-body-wrapper">
+            <div class="post-content">
+
+              <h2 id="introduction">引言</h2>
+              <p>Rust 作为一门系统级编程语言，近年来在 Web 开发领域也展现出了强大的潜力。其独特的所有权系统保证了内存安全，同时又不会带来垃圾回收的性能开销。对于需要高并发、低延迟的 Web 服务来说，Rust 是一个非常理想的选择。</p>
+              <p>在本文中，我们将使用 <a href="#">Actix-web</a> 框架来构建一个完整的 RESTful API 服务。这个框架在 <a href="#">TechEmpower benchmarks</a> 中多次名列前茅，是目前性能最好的 Rust Web 框架之一。</p>
+
+              <blockquote>
+                <p>"如果你想要 C++ 的性能和 Python 的开发体验，那么 Rust 可能是你一直在寻找的答案。"</p>
+              </blockquote>
+
+              <h2 id="environment-setup">环境搭建</h2>
+              <p>首先确保你已经安装了最新版本的 Rust 工具链。我们推荐使用 <code>rustup</code> 来管理 Rust 版本：</p>
+
+              <pre><code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup default stable
+cargo new web-service
+cd web-service</code></pre>
+
+              <p>在 <code>Cargo.toml</code> 中添加依赖：</p>
+
+              <pre><code>[dependencies]
+actix-web = "4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+sqlx = { version = "0.7", features = ["runtime-tokio", "postgres"] }</code></pre>
+
+              <h2 id="project-structure">项目结构设计</h2>
+              <p>一个良好的项目结构对于长期维护至关重要。我们采用以下分层架构：</p>
+
+              <ul>
+                <li><strong>handlers</strong> — 处理 HTTP 请求和响应</li>
+                <li><strong>services</strong> — 业务逻辑层</li>
+                <li><strong>models</strong> — 数据模型定义</li>
+                <li><strong>db</strong> — 数据库交互层</li>
+                <li><strong>middleware</strong> — 中间件（认证、日志等）</li>
+              </ul>
+
+              <h3 id="route-design">路由设计</h3>
+              <p>RESTful API 的路由设计应该遵循资源导向的原则。每个 URL 路径代表一个资源，HTTP 方法代表对资源的操作：</p>
+
+              <table>
+                <thead>
+                  <tr><th>方法</th><th>路径</th><th>描述</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>GET</td><td>/api/users</td><td>获取用户列表</td></tr>
+                  <tr><td>POST</td><td>/api/users</td><td>创建新用户</td></tr>
+                  <tr><td>GET</td><td>/api/users/:id</td><td>获取单个用户</td></tr>
+                  <tr><td>PUT</td><td>/api/users/:id</td><td>更新用户</td></tr>
+                  <tr><td>DELETE</td><td>/api/users/:id</td><td>删除用户</td></tr>
+                </tbody>
+              </table>
+
+              <h3 id="error-handling">错误处理</h3>
+              <p>Rust 的 <code>Result</code> 类型使得错误处理变得非常优雅。我们可以定义一个统一的错误类型，然后利用 <code>?</code> 操作符进行错误传播：</p>
+
+              <pre><code>use actix_web::{HttpResponse, ResponseError};
+use std::fmt;
+
+#[derive(Debug)]
+enum AppError {
+    NotFound(String),
+    Internal(String),
+    BadRequest(String),
+}
+
+impl fmt::Display for AppError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            AppError::NotFound(msg) => write!(f, "Not Found: {}", msg),
+            AppError::Internal(msg) => write!(f, "Internal Error: {}", msg),
+            AppError::BadRequest(msg) => write!(f, "Bad Request: {}", msg),
+        }
+    }
+}
+
+impl ResponseError for AppError {
+    fn error_response(&self) -> HttpResponse {
+        match self {
+            AppError::NotFound(_) => HttpResponse::NotFound().json("Resource not found"),
+            AppError::Internal(_) => HttpResponse::InternalServerError().json("Internal error"),
+            AppError::BadRequest(_) => HttpResponse::BadRequest().json("Bad request"),
+        }
+    }
+}</code></pre>
+
+              <h2 id="database">数据库连接</h2>
+              <p>使用 <code>sqlx</code> 提供的连接池来管理数据库连接。连接池可以复用已建立的连接，避免频繁创建和销毁连接的开销：</p>
+
+              <pre><code>use sqlx::postgres::PgPoolOptions;
+
+let pool = PgPoolOptions::new()
+    .max_connections(5)
+    .connect("postgres://user:pass@localhost/mydb")
+    .await?;</code></pre>
+
+              <h2 id="middleware">中间件</h2>
+              <p>中间件是 Web 框架中非常重要的概念。它允许我们在请求到达处理函数之前或之后执行一些通用逻辑，比如日志记录、认证检查、CORS 处理等。</p>
+
+              <p>Actix-web 提供了灵活的中间件系统。我们可以使用内置的中间件，也可以自定义中间件来满足特定需求。</p>
+
+              <h2 id="performance">性能优化</h2>
+              <p>Rust 天生具有高性能的优势，但在 Web 开发中，还有一些额外的优化技巧值得注意：</p>
+
+              <ol>
+                <li><strong>异步处理</strong> — 使用 <code>tokio</code> 运行时处理 I/O 密集型操作</li>
+                <li><strong>连接池</strong> — 复用数据库和 HTTP 客户端连接</li>
+                <li><strong>缓存</strong> — 对频繁访问的数据使用内存缓存</li>
+                <li><strong>序列化</strong> — 选择高效的序列化格式（如 <code>simd-json</code>）</li>
+              </ol>
+
+              <hr>
+
+              <h2 id="summary">总结</h2>
+              <p>Rust 在 Web 开发领域正在快速成熟。虽然学习曲线相对陡峭，但一旦掌握了核心概念，你就能构建出既安全又高性能的 Web 服务。希望本文能为你的 Rust Web 开发之旅提供一些有价值的参考。</p>
+
+            </div>
+
+            <!-- TOC Sidebar -->
+            <aside class="toc-sidebar">
+              <div class="toc-wrapper">
+                <h3 class="toc-title">Contents</h3>
+                <ol class="toc-list">
+                  <li><a href="#introduction" class="active">引言</a></li>
+                  <li><a href="#environment-setup">环境搭建</a></li>
+                  <li>
+                    <a href="#project-structure">项目结构设计</a>
+                    <ol>
+                      <li><a href="#route-design">路由设计</a></li>
+                      <li><a href="#error-handling">错误处理</a></li>
+                    </ol>
+                  </li>
+                  <li><a href="#database">数据库连接</a></li>
+                  <li><a href="#middleware">中间件</a></li>
+                  <li><a href="#performance">性能优化</a></li>
+                  <li><a href="#summary">总结</a></li>
+                </ol>
+              </div>
+            </aside>
+          </div>
+
+          <!-- Post footer -->
+          <footer class="post-footer-section">
+            <div class="post-tags">
+              <a href="#">#Rust</a>
+              <a href="#">#Web</a>
+              <a href="#">#后端</a>
+              <a href="#">#Actix-web</a>
+            </div>
+            <nav class="post-nav">
+              <a href="#">&laquo; CSS Container Queries 实战指南</a>
+              <a href="#">从零理解 Transformer 架构 &raquo;</a>
+            </nav>
+          </footer>
+        </article>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>&copy; 2026 Warmpaper Blog</p>
+        <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> &middot; Theme <a href="#">Warmpaper</a></p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // View switching
+    function switchView(view) {
+      document.querySelectorAll('.view-home, .view-post').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      document.querySelectorAll('.view-btn').forEach(function(el) {
+        el.classList.remove('active');
+      });
+
+      if (view === 'home') {
+        document.querySelector('.view-home').classList.add('active');
+        document.querySelectorAll('.view-btn')[0].classList.add('active');
+      } else {
+        document.querySelector('.view-post').classList.add('active');
+        document.querySelectorAll('.view-btn')[1].classList.add('active');
+      }
+      window.scrollTo(0, 0);
+    }
+
+    // TOC scroll tracking
+    (function() {
+      var tocLinks = document.querySelectorAll('.toc-list a');
+      if (!tocLinks.length) return;
+      var headings = document.querySelectorAll('.post-content h2[id], .post-content h3[id]');
+      if (!headings.length) return;
+
+      function setActive(id) {
+        tocLinks.forEach(function(link) {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + id) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            setActive(entry.target.getAttribute('id'));
+          }
+        });
+      }, { rootMargin: '-80px 0px -75% 0px' });
+
+      headings.forEach(function(heading) { observer.observe(heading); });
+    })();
+  </script>
+</body>
+</html>
