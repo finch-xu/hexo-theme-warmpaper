@@ -1,3 +1,24 @@
+// Mobile nav toggle
+(function () {
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = document.querySelector('.site-nav');
+  if (!toggle || !nav) return;
+
+  toggle.addEventListener('click', function () {
+    var expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    nav.classList.toggle('open');
+  });
+
+  // Close menu when a nav link is clicked
+  nav.addEventListener('click', function (e) {
+    if (e.target.classList.contains('nav-link')) {
+      toggle.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('open');
+    }
+  });
+})();
+
 (function () {
   // TOC scroll tracking
   var tocLinks = document.querySelectorAll('.toc a');
