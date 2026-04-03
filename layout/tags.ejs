@@ -1,0 +1,15 @@
+<div class="archive">
+  <h1 class="archive-title">Tags</h1>
+  <% if (site.tags.length) { %>
+    <div class="tag-cloud">
+      <% site.tags.sort('name').each(function(tag) { %>
+        <a class="tag-cloud-item" href="<%- url_for(tag.path) %>">
+          #<%= tag.name %>
+          <span class="tag-cloud-count"><%= tag.posts.length %></span>
+        </a>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p class="no-data">No tags yet.</p>
+  <% } %>
+</div>

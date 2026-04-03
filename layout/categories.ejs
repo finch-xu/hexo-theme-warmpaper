@@ -1,0 +1,15 @@
+<div class="archive">
+  <h1 class="archive-title">Categories</h1>
+  <% if (site.categories.length) { %>
+    <div class="category-list">
+      <% site.categories.sort('name').each(function(cat) { %>
+        <a class="category-list-item" href="<%- url_for(cat.path) %>">
+          <span class="category-list-name"><%= cat.name %></span>
+          <span class="category-list-count"><%= cat.posts.length %></span>
+        </a>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p class="no-data">No categories yet.</p>
+  <% } %>
+</div>
