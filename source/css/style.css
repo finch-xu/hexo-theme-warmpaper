@@ -28,6 +28,22 @@
   --radius: 8px;
   --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
   --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.03);
+
+  /* Syntax highlighting colors — "warm ink on paper" */
+  --color-syntax-keyword: #A0522D;
+  --color-syntax-string: #4E7A3E;
+  --color-syntax-comment: #9B9490;
+  --color-syntax-number: #2E7D6F;
+  --color-syntax-function: #7B4B2A;
+  --color-syntax-type: #7F5061;
+  --color-syntax-operator: #6B6560;
+  --color-syntax-attribute: #B5651D;
+  --color-syntax-meta: #9C6B6B;
+  --color-syntax-regexp: #C06040;
+  --color-syntax-addition-text: #3C763D;
+  --color-syntax-addition-bg: #DFF0D8;
+  --color-syntax-deletion-text: #A94442;
+  --color-syntax-deletion-bg: #F2DEDE;
 }
 
 /* --- Reset --- */
@@ -525,6 +541,198 @@ figure.highlight .line {
   line-height: 1.55;
   font-family: var(--font-mono);
   font-size: 0.88rem;
+}
+
+/* --- Syntax Highlighting: highlight.js tokens (hljs: false, Hexo default) --- */
+figure.highlight .comment,
+figure.highlight .meta {
+  color: var(--color-syntax-comment);
+  font-style: italic;
+}
+
+figure.highlight .keyword,
+figure.highlight .selector-tag,
+figure.highlight .tag .name {
+  color: var(--color-syntax-keyword);
+}
+
+figure.highlight .string,
+figure.highlight .symbol,
+figure.highlight .bullet {
+  color: var(--color-syntax-string);
+}
+
+figure.highlight .number,
+figure.highlight .literal {
+  color: var(--color-syntax-number);
+}
+
+figure.highlight .title,
+figure.highlight .title.function_ {
+  color: var(--color-syntax-function);
+}
+
+figure.highlight .built_in,
+figure.highlight .type {
+  color: var(--color-syntax-type);
+}
+
+figure.highlight .params {
+  color: var(--color-syntax-operator);
+}
+
+figure.highlight .attr,
+figure.highlight .attribute,
+figure.highlight .tag .attr {
+  color: var(--color-syntax-attribute);
+}
+
+figure.highlight .regexp,
+figure.highlight .link {
+  color: var(--color-syntax-regexp);
+}
+
+figure.highlight .selector-class,
+figure.highlight .selector-id {
+  color: var(--color-syntax-function);
+}
+
+figure.highlight .addition {
+  color: var(--color-syntax-addition-text);
+  background: var(--color-syntax-addition-bg);
+}
+
+figure.highlight .deletion {
+  color: var(--color-syntax-deletion-text);
+  background: var(--color-syntax-deletion-bg);
+}
+
+/* --- Syntax Highlighting: highlight.js tokens (hljs: true) --- */
+figure.highlight .hljs-comment,
+figure.highlight .hljs-quote {
+  color: var(--color-syntax-comment);
+  font-style: italic;
+}
+
+figure.highlight .hljs-keyword,
+figure.highlight .hljs-selector-tag {
+  color: var(--color-syntax-keyword);
+}
+
+figure.highlight .hljs-string,
+figure.highlight .hljs-symbol,
+figure.highlight .hljs-bullet {
+  color: var(--color-syntax-string);
+}
+
+figure.highlight .hljs-number,
+figure.highlight .hljs-literal {
+  color: var(--color-syntax-number);
+}
+
+figure.highlight .hljs-title,
+figure.highlight .hljs-function .hljs-title {
+  color: var(--color-syntax-function);
+}
+
+figure.highlight .hljs-built_in,
+figure.highlight .hljs-type {
+  color: var(--color-syntax-type);
+}
+
+figure.highlight .hljs-params {
+  color: var(--color-syntax-operator);
+}
+
+figure.highlight .hljs-attr,
+figure.highlight .hljs-attribute {
+  color: var(--color-syntax-attribute);
+}
+
+figure.highlight .hljs-meta {
+  color: var(--color-syntax-meta);
+}
+
+figure.highlight .hljs-regexp,
+figure.highlight .hljs-link {
+  color: var(--color-syntax-regexp);
+}
+
+figure.highlight .hljs-selector-class,
+figure.highlight .hljs-selector-id {
+  color: var(--color-syntax-function);
+}
+
+figure.highlight .hljs-addition {
+  color: var(--color-syntax-addition-text);
+  background: var(--color-syntax-addition-bg);
+}
+
+figure.highlight .hljs-deletion {
+  color: var(--color-syntax-deletion-text);
+  background: var(--color-syntax-deletion-bg);
+}
+
+/* --- Syntax Highlighting: PrismJS tokens --- */
+figure.highlight .token.comment,
+figure.highlight .token.prolog,
+figure.highlight .token.doctype,
+figure.highlight .token.cdata {
+  color: var(--color-syntax-comment);
+  font-style: italic;
+}
+
+figure.highlight .token.keyword,
+figure.highlight .token.tag {
+  color: var(--color-syntax-keyword);
+}
+
+figure.highlight .token.string,
+figure.highlight .token.char,
+figure.highlight .token.template-string,
+figure.highlight .token.attr-value {
+  color: var(--color-syntax-string);
+}
+
+figure.highlight .token.number,
+figure.highlight .token.boolean {
+  color: var(--color-syntax-number);
+}
+
+figure.highlight .token.function {
+  color: var(--color-syntax-function);
+}
+
+figure.highlight .token.class-name {
+  color: var(--color-syntax-type);
+}
+
+figure.highlight .token.property,
+figure.highlight .token.attr-name {
+  color: var(--color-syntax-attribute);
+}
+
+figure.highlight .token.operator,
+figure.highlight .token.punctuation {
+  color: var(--color-syntax-operator);
+}
+
+figure.highlight .token.selector {
+  color: var(--color-syntax-function);
+}
+
+figure.highlight .token.regex {
+  color: var(--color-syntax-regexp);
+}
+
+figure.highlight .token.inserted {
+  color: var(--color-syntax-addition-text);
+  background: var(--color-syntax-addition-bg);
+}
+
+figure.highlight .token.deleted {
+  color: var(--color-syntax-deletion-text);
+  background: var(--color-syntax-deletion-bg);
 }
 
 .post-content table {
