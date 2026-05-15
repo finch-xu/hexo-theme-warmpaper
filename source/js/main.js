@@ -55,3 +55,39 @@
     observer.observe(heading);
   });
 })();
+
+// Theme toggle
+(function () {
+  var STORAGE_KEY = 'warmpaper-theme';
+  var btn = document.querySelector('.theme-toggle');
+  if (!btn) return;
+
+  var mql = window.matchMedia('(prefers-color-scheme: dark)');
+
+  function currentTheme() {
+    try {
+      var saved = localStorage.getItem(STORAGE_KEY);
+      if (saved === 'light' || saved === 'dark') return saved;
+    } catch (e) {}
+    return mql.matches ? 'dark' : 'light';
+  }
+
+  function syncIcon() {
+    btn.setAttribute('data-theme-state', currentTheme());
+  }
+
+  btn.addEventListener('click', function () {
+    var next = currentTheme() === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem(STORAGE_KEY, next); } catch (e) {}
+    btn.setAttribute('data-theme-state', next);
+  });
+
+  mql.addEventListener('change', function () {
+    var hasManual = false;
+    try { hasManual = !!localStorage.getItem(STORAGE_KEY); } catch (e) {}
+    if (!hasManual) syncIcon();
+  });
+
+  syncIcon();
+})();

@@ -8,4 +8,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-gb-web@latest/lxgwwenkaigb-regular/result.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-gb-web@latest/lxgwwenkaigb-medium/result.css">
   <%- css('css/style') %>
+  <%# Inline to avoid FOUC. Storage key kept in sync with source/js/main.js %>
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('warmpaper-theme');
+        if (saved === 'dark' || saved === 'light') {
+          document.documentElement.setAttribute('data-theme', saved);
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>

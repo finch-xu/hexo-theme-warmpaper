@@ -44,6 +44,82 @@
   --color-syntax-addition-bg: #DFF0D8;
   --color-syntax-deletion-text: #A94442;
   --color-syntax-deletion-bg: #F2DEDE;
+
+  --color-header-bg: rgba(250, 249, 247, 0.85);
+}
+
+/* --- Dark Mode: follows system when no manual override --- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #1F1B17;
+    --color-surface: #2B2520;
+    --color-surface-hover: #332C26;
+    --color-code-bg: #15110E;
+    --color-accent: #E89576;
+    --color-accent-hover: #F0A88B;
+    --color-text: #EDE4D9;
+    --color-text-secondary: #A8A099;
+    --color-text-tertiary: #756E66;
+    --color-border: #3A332C;
+    --color-border-light: #2F2924;
+    --grid-color: rgba(218, 119, 86, 0.045);
+    --grid-color-strong: rgba(218, 119, 86, 0.08);
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.25);
+
+    --color-syntax-keyword: #D49060;
+    --color-syntax-string: #8FB87A;
+    --color-syntax-comment: #756E66;
+    --color-syntax-number: #6FB8A8;
+    --color-syntax-function: #C88860;
+    --color-syntax-type: #C99BAE;
+    --color-syntax-operator: #A8A099;
+    --color-syntax-attribute: #E2A062;
+    --color-syntax-meta: #C9999B;
+    --color-syntax-regexp: #E08060;
+    --color-syntax-addition-text: #8FCC85;
+    --color-syntax-addition-bg: rgba(95, 145, 70, 0.18);
+    --color-syntax-deletion-text: #E08585;
+    --color-syntax-deletion-bg: rgba(160, 65, 65, 0.18);
+
+    --color-header-bg: rgba(31, 27, 23, 0.85);
+  }
+}
+
+/* --- Dark Mode: forced via [data-theme="dark"] --- */
+:root[data-theme="dark"] {
+  --color-bg: #1F1B17;
+  --color-surface: #2B2520;
+  --color-surface-hover: #332C26;
+  --color-code-bg: #15110E;
+  --color-accent: #E89576;
+  --color-accent-hover: #F0A88B;
+  --color-text: #EDE4D9;
+  --color-text-secondary: #A8A099;
+  --color-text-tertiary: #756E66;
+  --color-border: #3A332C;
+  --color-border-light: #2F2924;
+  --grid-color: rgba(218, 119, 86, 0.045);
+  --grid-color-strong: rgba(218, 119, 86, 0.08);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.25);
+
+  --color-syntax-keyword: #D49060;
+  --color-syntax-string: #8FB87A;
+  --color-syntax-comment: #756E66;
+  --color-syntax-number: #6FB8A8;
+  --color-syntax-function: #C88860;
+  --color-syntax-type: #C99BAE;
+  --color-syntax-operator: #A8A099;
+  --color-syntax-attribute: #E2A062;
+  --color-syntax-meta: #C9999B;
+  --color-syntax-regexp: #E08060;
+  --color-syntax-addition-text: #8FCC85;
+  --color-syntax-addition-bg: rgba(95, 145, 70, 0.18);
+  --color-syntax-deletion-text: #E08585;
+  --color-syntax-deletion-bg: rgba(160, 65, 65, 0.18);
+
+  --color-header-bg: rgba(31, 27, 23, 0.85);
 }
 
 /* --- Reset --- */
@@ -117,7 +193,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: rgba(250, 249, 247, 0.85);
+  background-color: var(--color-header-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border-light);
@@ -222,6 +298,36 @@ img {
 .nav-toggle[aria-expanded="true"] .nav-toggle-icon::after {
   top: 0;
   transform: rotate(-45deg);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  padding: 6px;
+  margin-left: 4px;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-surface-hover);
+  color: var(--color-text);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  display: none;
+}
+
+.theme-toggle[data-theme-state="light"] .icon-sun,
+.theme-toggle[data-theme-state="dark"] .icon-moon {
+  display: block;
 }
 
 /* --- Profile Card (Homepage) --- */
@@ -1172,6 +1278,12 @@ figure.highlight .token.deleted {
   .site-nav .nav-link {
     padding: 0.6rem 0;
     font-size: 0.95rem;
+  }
+
+  .site-nav .theme-toggle {
+    margin-left: 0;
+    margin-top: 0.25rem;
+    align-self: flex-start;
   }
 
   .post-title {
