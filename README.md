@@ -30,6 +30,7 @@
 - 响应式设计（移动端自动隐藏 TOC）
 - 霞鹜文楷 GB 字体（CDN 分片加载）
 - 支持亮色、暗色主题，自适应切换，并支持手动切换
+- Waline 评论系统集成（可选开启）
 
 ## 安装
 
@@ -186,6 +187,11 @@ toc:
   min_depth: 2
   list_number: false
 
+# Waline 评论系统
+waline:
+  enable: false
+  serverURL: 'https://your-server-url'
+
 # 文章摘要链接文字
 excerpt_link: Read More
 
@@ -214,10 +220,12 @@ hexo-theme-warmpaper/
 │       ├── profile.ejs      # 个人资料卡片
 │       ├── post-card.ejs    # 文章卡片
 │       ├── pagination.ejs   # 分页
-│       └── toc.ejs          # 目录侧边栏
+│       ├── toc.ejs          # 目录侧边栏
+│       └── comment.ejs      # Waline 评论模板
 └── source/
     ├── css/
-    │   └── style.css        # 主样式表
+    │   ├── style.css        # 主样式表
+    │   └── waline.css       # Waline 评论样式
     ├── images/
     │   └── logo.svg         # 主题默认 Logo
     └── js/

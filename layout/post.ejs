@@ -30,6 +30,10 @@
     } %>
   </div>
 
+  <% if (theme.waline && theme.waline.enable) { %>
+    <%- partial('partial/comment') %>
+  <% } %>
+
   <footer class="post-footer">
     <% if (page.tags && page.tags.length) { %>
       <div class="post-tags">

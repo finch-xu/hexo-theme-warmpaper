@@ -15,6 +15,11 @@ toc:
   min_depth: 2
   list_number: false
 
+# Waline comment
+waline:
+  enable: false
+  serverURL: 'https://your-server-url'
+
 # Profile (shown on homepage above post list)
 profile:
   avatar: /images/logo.svg
