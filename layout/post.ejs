@@ -34,6 +34,10 @@
     <%- partial('partial/comment') %>
   <% } %>
 
+  <% if (theme.giscus && theme.giscus.enable) { %>
+    <%- partial('partial/giscus') %>
+  <% } %>
+
   <footer class="post-footer">
     <% if (page.tags && page.tags.length) { %>
       <div class="post-tags">

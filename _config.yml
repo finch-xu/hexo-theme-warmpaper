@@ -26,6 +26,24 @@ waline:
   enable: false
   serverURL: 'https://your-server-url'
 
+# Giscus comment (GitHub Discussions)
+# 到 https://giscus.app 生成 repo / category 的 ID 后填入
+giscus:
+  enable: false
+  repo: 'user/repo'
+  repo_id: ''
+  category: 'Announcements'
+  category_id: ''
+  mapping: 'pathname'
+  strict: '0'
+  reactions_enabled: '1'
+  emit_metadata: '0'
+  input_position: 'bottom'
+  lang: 'zh-CN'
+  # 主题名见 https://giscus.app(也可填自定义 CSS 的 URL)
+  theme_light: 'light'
+  theme_dark: 'dark'
+
 # Profile (shown on homepage above post list)
 profile:
   avatar: /images/logo.svg

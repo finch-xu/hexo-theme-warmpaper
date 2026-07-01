@@ -1,0 +1,60 @@
+<%# Giscus (GitHub Discussions) — loaded only when theme.giscus.enable is true.
+    Config values come from _config.yml; generate the repo/category IDs at
+    https://giscus.app. Unlike MathJax, giscus's client.js is a dynamic loader
+    with no SRI hash available, so it is trusted by origin (giscus.app) only. %>
+<div class="giscus"></div>
+<script>
+  (function () {
+    var THEME_LIGHT = '<%= theme.giscus.theme_light || "light" %>';
+    var THEME_DARK  = '<%= theme.giscus.theme_dark  || "dark"  %>';
+
+    // The site's authoritative theme lives on <html data-theme>; when absent,
+    // fall back to the OS preference (mirrors source/js/main.js).
+    function computeTheme() {
+      var attr = document.documentElement.getAttribute('data-theme');
+      if (attr === 'dark') return THEME_DARK;
+      if (attr === 'light') return THEME_LIGHT;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? THEME_DARK : THEME_LIGHT;
+    }
+
+    // Inject the loader with the correct theme already set, so giscus renders in
+    // the right theme on first paint instead of flashing then re-skinning.
+    var s = document.createElement('script');
+    s.src = 'https://giscus.app/client.js';
+    s.async = true;
+    s.crossOrigin = 'anonymous';
+    s.setAttribute('data-repo', '<%= theme.giscus.repo %>');
+    s.setAttribute('data-repo-id', '<%= theme.giscus.repo_id %>');
+    s.setAttribute('data-category', '<%= theme.giscus.category %>');
+    s.setAttribute('data-category-id', '<%= theme.giscus.category_id %>');
+    s.setAttribute('data-mapping', '<%= theme.giscus.mapping || "pathname" %>');
+    s.setAttribute('data-strict', '<%= theme.giscus.strict || "0" %>');
+    s.setAttribute('data-reactions-enabled', '<%= theme.giscus.reactions_enabled || "1" %>');
+    s.setAttribute('data-emit-metadata', '<%= theme.giscus.emit_metadata || "0" %>');
+    s.setAttribute('data-input-position', '<%= theme.giscus.input_position || "bottom" %>');
+    s.setAttribute('data-lang', '<%= theme.giscus.lang || "zh-CN" %>');
+    s.setAttribute('data-loading', 'lazy');
+    s.setAttribute('data-theme', computeTheme());
+    document.querySelector('.giscus').appendChild(s);
+
+    // giscus is a cross-origin iframe, so it can't read the host CSS. Push the
+    // theme to it via postMessage whenever the site theme changes.
+    function sendTheme() {
+      var frame = document.querySelector('iframe.giscus-frame');
+      if (!frame) return;
+      frame.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: computeTheme() } } },
+        'https://giscus.app'
+      );
+    }
+
+    // The theme-toggle button flips <html data-theme>; watch it directly so we
+    // stay decoupled from source/js/main.js.
+    new MutationObserver(sendTheme).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    });
+    // Also follow the OS preference when the user hasn't manually chosen a theme.
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', sendTheme);
+  })();
+</script>

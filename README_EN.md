@@ -29,7 +29,7 @@
 - Card-style post list on homepage
 - Responsive design (TOC auto-hides on mobile)
 - LXGW WenKai GB font (CDN with subset loading)
-- Waline comment system integration (optional)
+- Comment systems: Waline and Giscus (GitHub Discussions), both optional and can coexist
 - Math (LaTeX) rendering via MathJax v4 (optional)
 
 ## Installation
@@ -226,11 +226,13 @@ hexo-theme-warmpaper/
 │       ├── pagination.ejs   # Pagination
 │       ├── toc.ejs          # TOC sidebar
 │       ├── comment.ejs      # Waline comment template
+│       ├── giscus.ejs       # Giscus comment component
 │       └── math.ejs         # MathJax formula component
 └── source/
     ├── css/
     │   ├── style.css        # Main stylesheet
     │   ├── waline.css       # Waline comment styles
+    │   ├── giscus.css       # Giscus comment styles
     │   └── math.css         # Math (formula) styles
     ├── images/
     │   └── logo.svg         # Default theme logo

@@ -30,7 +30,7 @@
 - 响应式设计（移动端自动隐藏 TOC）
 - 霞鹜文楷 GB 字体（CDN 分片加载）
 - 支持亮色、暗色主题，自适应切换，并支持手动切换
-- Waline 评论系统集成（可选开启）
+- 评论系统集成：Waline、Giscus（基于 GitHub Discussions），均可选开启，支持并存
 - 数学公式渲染（MathJax v4，可选开启）
 
 ## 安装
@@ -227,11 +227,13 @@ hexo-theme-warmpaper/
 │       ├── pagination.ejs   # 分页
 │       ├── toc.ejs          # 目录侧边栏
 │       ├── comment.ejs      # Waline 评论模板
+│       ├── giscus.ejs       # Giscus 评论组件
 │       └── math.ejs         # MathJax 公式组件
 └── source/
     ├── css/
     │   ├── style.css        # 主样式表
     │   ├── waline.css       # Waline 评论样式
+    │   ├── giscus.css       # Giscus 评论样式
     │   └── math.css         # 数学公式样式
     ├── images/
     │   └── logo.svg         # 主题默认 Logo
