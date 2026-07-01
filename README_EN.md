@@ -30,6 +30,7 @@
 - Responsive design (TOC auto-hides on mobile)
 - LXGW WenKai GB font (CDN with subset loading)
 - Waline comment system integration (optional)
+- Math (LaTeX) rendering via MathJax v4 (optional)
 
 ## Installation
 
@@ -186,6 +187,10 @@ toc:
   min_depth: 2
   list_number: false
 
+# Math (LaTeX) via MathJax v4 — needs a Markdown renderer that keeps $...$, see "Math" below
+math:
+  enable: false
+
 # Waline comment system
 waline:
   enable: false
@@ -220,16 +225,40 @@ hexo-theme-warmpaper/
 │       ├── post-card.ejs    # Post card
 │       ├── pagination.ejs   # Pagination
 │       ├── toc.ejs          # TOC sidebar
-│       └── comment.ejs      # Waline comment template
+│       ├── comment.ejs      # Waline comment template
+│       └── math.ejs         # MathJax formula component
 └── source/
     ├── css/
     │   ├── style.css        # Main stylesheet
-    │   └── waline.css       # Waline comment styles
+    │   ├── waline.css       # Waline comment styles
+    │   └── math.css         # Math (formula) styles
     ├── images/
     │   └── logo.svg         # Default theme logo
     └── js/
         └── main.js          # TOC scroll tracking
 ```
+
+## Math
+
+The theme ships built-in MathJax v4 for rendering LaTeX. It is off by default. Enable it in `_config.yml`:
+
+```yaml
+math:
+  enable: true
+```
+
+- Inline math uses `$ ... $` or `\( ... \)`; display math uses `$$ ... $$` or `\[ ... \]`.
+- Per-post override: set `math: true` (force on) or `math: false` (off for one post) in the post's front-matter.
+- Loaded only on posts and standalone pages, not on the homepage or listing pages.
+
+**Important prerequisite: your Markdown renderer must keep `$...$` intact.** Hexo's default `hexo-renderer-marked` turns `x_i` into italics and eats the backslash in `\alpha`, breaking formulas. Switch to a math-aware renderer, for example:
+
+```bash
+npm un hexo-renderer-marked
+npm i hexo-renderer-markdown-it
+```
+
+> MathJax is loaded on demand from the jsDelivr CDN (pinned to `4.1.2` with Subresource Integrity; bump the version and the `integrity` hash together when upgrading). If you previously wired up MathJax / KaTeX yourself, remove it to avoid rendering each formula twice.
 
 ## Fonts
 

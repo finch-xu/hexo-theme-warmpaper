@@ -1,0 +1,27 @@
+/* MathJax (LaTeX) styles — loaded only when math is enabled. */
+
+/* Wide display equations scroll horizontally on narrow screens
+   instead of overflowing the layout. */
+mjx-container[display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+/* Math follows the surrounding text color, so dark mode adapts for free. */
+mjx-container {
+  color: inherit;
+}
+
+/* Defensive: keep the accessibility MathML visually hidden even if it is
+   ever enabled, so a formula is never rendered twice. */
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}

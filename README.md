@@ -31,6 +31,7 @@
 - 霞鹜文楷 GB 字体（CDN 分片加载）
 - 支持亮色、暗色主题，自适应切换，并支持手动切换
 - Waline 评论系统集成（可选开启）
+- 数学公式渲染（MathJax v4，可选开启）
 
 ## 安装
 
@@ -187,6 +188,10 @@ toc:
   min_depth: 2
   list_number: false
 
+# 数学公式（MathJax v4）— 需 Markdown 渲染器透传 $...$，详见下文「数学公式」
+math:
+  enable: false
+
 # Waline 评论系统
 waline:
   enable: false
@@ -221,16 +226,40 @@ hexo-theme-warmpaper/
 │       ├── post-card.ejs    # 文章卡片
 │       ├── pagination.ejs   # 分页
 │       ├── toc.ejs          # 目录侧边栏
-│       └── comment.ejs      # Waline 评论模板
+│       ├── comment.ejs      # Waline 评论模板
+│       └── math.ejs         # MathJax 公式组件
 └── source/
     ├── css/
     │   ├── style.css        # 主样式表
-    │   └── waline.css       # Waline 评论样式
+    │   ├── waline.css       # Waline 评论样式
+    │   └── math.css         # 数学公式样式
     ├── images/
     │   └── logo.svg         # 主题默认 Logo
     └── js/
         └── main.js          # TOC 滚动追踪
 ```
+
+## 数学公式
+
+主题内置 MathJax v4 渲染 LaTeX 公式，默认关闭。在 `_config.yml` 中开启：
+
+```yaml
+math:
+  enable: true
+```
+
+- 行内公式用 `$ ... $` 或 `\( ... \)`，块级公式用 `$$ ... $$` 或 `\[ ... \]`。
+- 单篇覆盖：在文章 front-matter 写 `math: true`（强制开启）或 `math: false`（单篇关闭）。
+- 仅在文章和独立页面加载，首页与列表页不加载。
+
+**重要前提：Markdown 渲染器需保留 `$...$`。** Hexo 默认的 `hexo-renderer-marked` 会把 `x_i` 解析成斜体、吞掉 `\alpha` 的反斜杠，导致公式错乱。请改用支持数学的渲染器，例如：
+
+```bash
+npm un hexo-renderer-marked
+npm i hexo-renderer-markdown-it
+```
+
+> MathJax 从 jsDelivr CDN 按需加载（已锁定版本 `4.1.2` 并启用 SRI 完整性校验；升级时需同时更新版本号与 `integrity` 哈希）。若你此前自行接入过 MathJax / KaTeX，请先移除，避免公式被渲染两遍。
 
 ## 字体引用
 

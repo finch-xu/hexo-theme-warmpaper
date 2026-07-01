@@ -3,4 +3,8 @@
   <div class="post-content">
     <%- page.content %>
   </div>
+
+  <% if ((page.math !== undefined) ? page.math : (theme.math && theme.math.enable)) { %>
+    <%- partial('partial/math') %>
+  <% } %>
 </article>

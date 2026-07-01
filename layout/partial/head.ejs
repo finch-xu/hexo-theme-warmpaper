@@ -11,6 +11,9 @@
   <% if (theme.waline && theme.waline.enable) { %>
     <%- css('css/waline') %>
   <% } %>
+  <% if ((page.math !== undefined) ? page.math : (theme.math && theme.math.enable)) { %>
+    <%- css('css/math') %>
+  <% } %>
   <%- css('css/style') %>
   <%# Inline to avoid FOUC. Storage key kept in sync with source/js/main.js %>
   <script>

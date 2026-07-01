@@ -15,6 +15,12 @@ toc:
   min_depth: 2
   list_number: false
 
+# Math (LaTeX) rendering via MathJax v4.
+# Requires a Markdown renderer that passes through $...$ (see README).
+# Per-post override: set `math: true` / `math: false` in a post's front-matter.
+math:
+  enable: true
+
 # Waline comment
 waline:
   enable: false
