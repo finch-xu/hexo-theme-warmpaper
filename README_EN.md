@@ -29,6 +29,7 @@
 - Card-style post list on homepage
 - Responsive design (TOC auto-hides on mobile)
 - LXGW WenKai GB font (CDN with subset loading)
+- Waline comment system integration (optional)
 
 ## Installation
 
@@ -185,6 +186,11 @@ toc:
   min_depth: 2
   list_number: false
 
+# Waline comment system
+waline:
+  enable: false
+  serverURL: 'https://your-server-url'
+
 # Post excerpt link text
 excerpt_link: Read More
 
@@ -213,10 +219,12 @@ hexo-theme-warmpaper/
 │       ├── profile.ejs      # Profile card
 │       ├── post-card.ejs    # Post card
 │       ├── pagination.ejs   # Pagination
-│       └── toc.ejs          # TOC sidebar
+│       ├── toc.ejs          # TOC sidebar
+│       └── comment.ejs      # Waline comment template
 └── source/
     ├── css/
-    │   └── style.css        # Main stylesheet
+    │   ├── style.css        # Main stylesheet
+    │   └── waline.css       # Waline comment styles
     ├── images/
     │   └── logo.svg         # Default theme logo
     └── js/

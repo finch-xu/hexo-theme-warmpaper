@@ -7,6 +7,10 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-gb-web@latest/lxgwwenkaigb-regular/result.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-gb-web@latest/lxgwwenkaigb-medium/result.css">
+
+  <% if (theme.waline && theme.waline.enable) { %>
+    <%- css('css/waline') %>
+  <% } %>
   <%- css('css/style') %>
   <%# Inline to avoid FOUC. Storage key kept in sync with source/js/main.js %>
   <script>
