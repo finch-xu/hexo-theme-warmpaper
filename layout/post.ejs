@@ -1,4 +1,14 @@
-<article class="post">
+<%
+// 提前生成目录：类名和侧栏出自同一个变量，不会出现「留了位置却没目录」
+// （例如全文标题都不在 min_depth~max_depth 范围内时 toc() 返回空串）
+var tocContent = (theme.toc && theme.toc.enable) ? toc(page.content, {
+  class: 'toc',
+  list_number: theme.toc.list_number || false,
+  max_depth: theme.toc.max_depth || 3,
+  min_depth: theme.toc.min_depth || 2
+}) : '';
+%>
+<article class="post<%= tocContent ? ' post-has-toc' : '' %>">
   <header class="post-header">
     <h1 class="post-title"><%= page.title %></h1>
     <div class="post-meta">
@@ -17,17 +27,9 @@
       <%- page.content %>
     </div>
 
-    <% if (theme.toc && theme.toc.enable) {
-      var tocContent = toc(page.content, {
-        class: 'toc',
-        list_number: theme.toc.list_number || false,
-        max_depth: theme.toc.max_depth || 3,
-        min_depth: theme.toc.min_depth || 2
-      });
-      if (tocContent) { %>
-        <%- partial('partial/toc', {tocContent: tocContent}) %>
-      <% }
-    } %>
+    <% if (tocContent) { %>
+      <%- partial('partial/toc', {tocContent: tocContent}) %>
+    <% } %>
   </div>
 
   <% if (theme.waline && theme.waline.enable) { %>

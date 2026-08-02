@@ -21,6 +21,7 @@
   --content-width: 800px;
   --page-width: 1200px;
   --sidebar-width: 200px;
+  --toc-gap: 2rem;
   --header-height: 60px;
   --font-sans: 'LXGW WenKai GB', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --font-serif: 'LXGW WenKai GB', 'Georgia', 'Times New Roman', serif;
@@ -553,6 +554,17 @@ img {
 }
 
 /* --- Post Body + TOC Layout --- */
+
+/* 有目录时为右侧腾出 gap + sidebar 的宽度。article 的内容盒收窄后，所有沿用
+   `max-width: var(--content-width); margin: 0 auto` 的子块（标题 / 正文 / 页脚 /
+   评论）会整齐地一起左移「腾出宽度的一半」，而绝对定位的目录恰好占据腾出的部分，
+   于是「正文 + 目录」这一对精确对称于页面中轴。设 C = 视口中心：
+     正文左缘 = C − 516px，目录右缘 = C + 516px  →  中点恒为 C
+   与 --page-width 无关，改宽页面也成立。 */
+.post-has-toc {
+  padding-right: calc(var(--sidebar-width) + var(--toc-gap));
+}
+
 .post-body-wrapper {
   position: relative;
   max-width: var(--content-width);
@@ -929,20 +941,60 @@ figure.highlight .token.deleted {
 }
 
 /* --- TOC Sidebar --- */
+
+/* top + bottom 同时为 0 且 height 为 auto 时，高度由 CSS 2.1 §10.6.4 的方程解出
+   = 包含块 padding box 的高度。这一步是必需的：否则 aside 高度塌缩成目录自身高度，
+   内部 sticky 的可移动行程为 0，等于没写 sticky。
+   包含块是 .post-body-wrapper（只包正文），所以目录会在正文结束处自然停住，
+   评论区旁不再出现目录。 */
 .toc-sidebar {
   position: absolute;
-  left: calc(100% + 2rem);
+  left: calc(100% + var(--toc-gap));
   top: 0;
+  bottom: 0;
   width: var(--sidebar-width);
+  /* aside 现在有整篇正文那么高，别让这块透明区域拦截正文右侧的拖拽选中 */
+  pointer-events: none;
 }
 
 .toc-wrapper {
   position: sticky;
   top: calc(var(--header-height) + 2rem);
   max-height: calc(100vh - var(--header-height) - 4rem);
+  /* 注意：设了 overflow-y 之后 overflow-x 会由 visible 计算为 auto，
+     于是本元素两轴都成为滚动容器，padding box 之外的内容一律被裁剪。
+     所以左侧轨道不能用 border（画在 padding box 外），改用 inset 阴影画在内部，
+     .toc-indicator 才盖得住它。 */
   overflow-y: auto;
+  overscroll-behavior: contain;
   padding-left: 1rem;
-  border-left: 1px solid var(--color-border-light);
+  box-shadow: inset 1px 0 0 var(--color-border-light);
+  pointer-events: auto;
+}
+
+/* 跟随当前章节滑动的高亮条，覆盖在上面那条轨道上。
+   作为 .toc-wrapper（sticky，属于已定位元素）的绝对定位子元素，
+   它随目录内部滚动一起移动，与 JS 里基于 rect 的定位公式自洽。 */
+.toc-indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 0;
+  border-radius: 1px;
+  background: var(--color-accent);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.22s ease, height 0.22s ease, opacity 0.18s ease;
+}
+
+.toc-indicator.is-visible {
+  opacity: 1;
+}
+
+/* 首次定位时用，避免指示条从目录顶部滑下来 */
+.toc-indicator.no-anim {
+  transition: none;
 }
 
 .toc-wrapper::-webkit-scrollbar {
@@ -992,9 +1044,18 @@ figure.highlight .token.deleted {
   color: var(--color-text);
 }
 
+/* 只改颜色，不要改 font-weight：主题同时加载了正文字体的 regular 和 medium 两个
+   字重，500 会命中度量不同的真实字面；目录列可用宽度仅约 181px，中文标题很容易卡在
+   换行临界点上，切换 active 的瞬间该项可能多出一行，导致它和其后所有项的位置全变，
+   指示条当场错位。区分度由颜色 + 指示条提供，字重是冗余信号。 */
 .toc a.active {
   color: var(--color-accent);
-  font-weight: 500;
+}
+
+/* 子章节激活时，其父章节做淡化标记。用 :has() 而非 JS 加类，状态不会脱节；
+   不支持的浏览器降级为「父级不淡化」，无害。 */
+.toc li:has(ol a.active) > a {
+  color: var(--color-text);
 }
 
 /* --- Post Footer --- */
@@ -1044,6 +1105,16 @@ figure.highlight .token.deleted {
 
 .post-nav a:hover {
   color: var(--color-accent);
+}
+
+/* --- Comments --- */
+/* 评论组件自身不带宽度约束，会撑满整个 article，与 800px 的正文列不对齐。
+   在这里统一收到正文列宽，有无目录都对齐。 */
+#waline,
+.giscus {
+  max-width: var(--content-width);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* --- Page (static) --- */
@@ -1231,9 +1302,25 @@ figure.highlight .token.deleted {
 }
 
 /* --- Responsive --- */
+/* 隐藏目录时必须同时撤掉腾出的宽度，否则正文仍被挤向左侧、右边留一块空白
+   （在 375px 手机上正文会被压成一条一百来像素宽的面条）。 */
 @media (max-width: 1100px) {
   .toc-sidebar {
     display: none;
+  }
+
+  .post-has-toc {
+    padding-right: 0;
+  }
+}
+
+@media print {
+  .toc-sidebar {
+    display: none;
+  }
+
+  .post-has-toc {
+    padding-right: 0;
   }
 }
 
@@ -1246,6 +1333,14 @@ figure.highlight .token.deleted {
 @media (prefers-reduced-motion: reduce) {
   .site-nav.open {
     animation: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .toc-indicator {
+    transition: none;
   }
 }
 
