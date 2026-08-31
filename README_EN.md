@@ -29,6 +29,7 @@
 - Card-style post list on homepage
 - Responsive design (TOC auto-hides on mobile)
 - LXGW WenKai GB font (CDN with subset loading)
+- Light and dark themes: follows the system preference automatically, with a manual toggle
 - Comment systems: Waline and Giscus (GitHub Discussions), both optional and can coexist
 - Math (LaTeX) rendering via MathJax v4 (optional)
 
