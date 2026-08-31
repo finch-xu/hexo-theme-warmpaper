@@ -1,3 +1,5 @@
+
+
 <div align="center">
   <img src="source/images/logo.svg" alt="Warmpaper Logo" width="120">
   <h1>hexo-theme-warmpaper</h1>
@@ -210,6 +212,8 @@ copyright: ""
 hexo-theme-warmpaper/
 ├── _config.yml              # 主题配置
 ├── package.json
+├── scripts/
+│   └── pages.js             # 生成 /tags 与 /categories 页面
 ├── layout/
 │   ├── layout.ejs           # 基础 HTML 骨架
 │   ├── index.ejs            # 首页
