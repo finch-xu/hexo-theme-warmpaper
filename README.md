@@ -1,5 +1,3 @@
-
-
 <div align="center">
   <img src="source/images/logo.svg" alt="Warmpaper Logo" width="120">
   <h1>hexo-theme-warmpaper</h1>
@@ -220,8 +218,10 @@ hexo-theme-warmpaper/
 │   ├── post.ejs             # 文章详情页
 │   ├── page.ejs             # 独立页面
 │   ├── archive.ejs          # 归档页
-│   ├── category.ejs         # 分类页
-│   ├── tag.ejs              # 标签页
+│   ├── category.ejs         # 单个分类页
+│   ├── categories.ejs       # 分类索引页（/categories）
+│   ├── tag.ejs              # 单个标签页
+│   ├── tags.ejs             # 标签索引页（/tags）
 │   └── partial/
 │       ├── head.ejs         # HTML head
 │       ├── header.ejs       # 导航栏
