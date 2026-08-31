@@ -209,14 +209,18 @@ copyright: ""
 hexo-theme-warmpaper/
 ├── _config.yml              # Theme configuration
 ├── package.json
+├── scripts/
+│   └── pages.js             # Generates the /tags and /categories pages
 ├── layout/
 │   ├── layout.ejs           # Base HTML skeleton
 │   ├── index.ejs            # Homepage
 │   ├── post.ejs             # Post detail page
 │   ├── page.ejs             # Standalone page
 │   ├── archive.ejs          # Archive page
-│   ├── category.ejs         # Category page
-│   ├── tag.ejs              # Tag page
+│   ├── category.ejs         # Single category page
+│   ├── categories.ejs       # Category index page (/categories)
+│   ├── tag.ejs              # Single tag page
+│   ├── tags.ejs             # Tag index page (/tags)
 │   └── partial/
 │       ├── head.ejs         # HTML head
 │       ├── header.ejs       # Navigation bar
