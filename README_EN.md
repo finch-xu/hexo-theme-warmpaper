@@ -9,7 +9,7 @@
   [![Node Version](https://img.shields.io/badge/node-%3E%3D20-DA7756)](https://nodejs.org)
   [![GitHub Stars](https://img.shields.io/github/stars/finch-xu/hexo-theme-warmpaper?style=flat&color=DA7756)](https://github.com/finch-xu/hexo-theme-warmpaper)
 
-  **Live Demo**: [pidan.dev](https://pidan.dev) | [中文](README.md)
+  **Live Demo**: [pidan.dev](https://pidan.dev) | [中文](README.md) | [日本語](README_JA.md)
 </div>
 
 <table>
